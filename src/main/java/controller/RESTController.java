@@ -19,7 +19,7 @@ public class RESTController {
     private Services myService;
 
     @GetMapping("user")
-    public  List<User> getUsers() {
+    public List<User> getUsers() {
         return myService.getUsers();
     }
 
