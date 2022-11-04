@@ -3,22 +3,23 @@ package service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.groupnine.project.Data.User;
+import com.groupnine.project.Repository.UserRepository;
 
 @Service
 public class Services {
-    public List<User> users = new ArrayList<>();
+    @Autowired
+    UserRepository userRepository;
     public Services() {
-
+        System.out.println(getUsers());
+    }
+    public void saveUser(User user){
+        userRepository.save(user);
     }
     public List<User> getUsers(){
-        return new ArrayList<>(users);
-    }
-
-    public void addUser(String user, String password){
-        User user1 = new User(user, password);
-        users.add(user1);
+        return userRepository.findAll();
     }
 }
