@@ -2,10 +2,8 @@ package com.groupnine.project.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.groupnine.project.Data.ClimateGlobal;
 import com.groupnine.project.Data.ClimateNorth;
 import com.groupnine.project.Data.ClimateSouth;
@@ -66,7 +64,7 @@ public class Services {
     public void saveUser(User user){
         userRepository.save(user);
     }
-
+    
     public List<User> getUsers(){
         return userRepository.findAll();
     }

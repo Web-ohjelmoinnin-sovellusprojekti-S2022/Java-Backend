@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.groupnine.project.Data.User;
 import com.groupnine.project.Data.ClimateGlobal;
 import com.groupnine.project.Data.ClimateNorth;
 import com.groupnine.project.Data.ClimateSouth;
+import com.groupnine.project.Data.User;
 import com.groupnine.project.service.Services;
 
 @RestController
 public class ClimateRestController {
     
     @Autowired
-    private Services myService;
-    
 
     @GetMapping("getclimateNorth")
     public List<ClimateNorth> getClimateNorth() {
@@ -34,8 +34,7 @@ public class ClimateRestController {
     public List<ClimateGlobal> getClimateGlobal() {
         return myService.getClimateGlobal();
     }
-
-
+    
     @GetMapping("user")
     public List<User> getUsers() {
         return myService.getUsers();
@@ -46,6 +45,5 @@ public class ClimateRestController {
         myService.saveUser(user);
         return "OK";
     }
-
 
 }
