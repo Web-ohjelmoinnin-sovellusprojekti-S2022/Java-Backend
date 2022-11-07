@@ -1,4 +1,4 @@
-package service;
+package com.groupnine.project.service;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import com.groupnine.project.Repository.UserRepository;
 public class Services {
     @Autowired
     UserRepository userRepository;
+
     public Services() {
-        System.out.println(getUsers());
     }
     public void saveUser(User user){
         userRepository.save(user);

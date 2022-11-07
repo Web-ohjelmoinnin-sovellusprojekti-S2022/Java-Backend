@@ -1,4 +1,4 @@
-package controller;
+package com.groupnine.project.controller;
 
 import java.util.List;
 
@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.groupnine.project.Data.User;
-
-import service.Services;
+import com.groupnine.project.service.Services;
 
 @RestController
-public class RESTController {
+public class ClimateRestController {
     
     @Autowired
     private Services myService;
