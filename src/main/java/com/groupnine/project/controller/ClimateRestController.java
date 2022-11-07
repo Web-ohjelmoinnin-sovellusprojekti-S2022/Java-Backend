@@ -20,17 +20,17 @@ public class ClimateRestController {
     @Autowired
     Services myService;
 
-    @GetMapping("getclimateNorth")
+    @GetMapping("/v1/climateNorth")
     public List<ClimateNorth> getClimateNorth() {
         return myService.getClimateNorth();
     }
 
-    @GetMapping("getclimateSouth")
+    @GetMapping("/v1/climateSouth")
     public List<ClimateSouth> getClimateSouth() {
         return myService.getClimateSouth();
     }
 
-    @GetMapping("getclimateGlobal")
+    @GetMapping("/v1/climateGlobal")
     public List<ClimateGlobal> getClimateGlobal() {
         return myService.getClimateGlobal();
     }
