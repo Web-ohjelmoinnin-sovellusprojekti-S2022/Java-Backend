@@ -12,13 +12,13 @@ import com.groupnine.project.Data.User;
 import com.groupnine.project.Data.ClimateGlobal;
 import com.groupnine.project.Data.ClimateNorth;
 import com.groupnine.project.Data.ClimateSouth;
-import com.groupnine.project.Data.User;
 import com.groupnine.project.service.Services;
 
 @RestController
 public class ClimateRestController {
     
     @Autowired
+    Services myService;
 
     @GetMapping("getclimateNorth")
     public List<ClimateNorth> getClimateNorth() {
