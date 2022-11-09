@@ -3,6 +3,7 @@ package com.groupnine.project.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,21 +21,25 @@ public class ClimateRestController {
     @Autowired
     Services myService;
 
+    @CrossOrigin
     @GetMapping("/v1/climateNorth")
     public List<ClimateNorth> getClimateNorth() {
         return myService.getClimateNorth();
     }
 
+    @CrossOrigin
     @GetMapping("/v1/climateSouth")
     public List<ClimateSouth> getClimateSouth() {
         return myService.getClimateSouth();
     }
 
+    @CrossOrigin
     @GetMapping("/v1/climateGlobal")
     public List<ClimateGlobal> getClimateGlobal() {
         return myService.getClimateGlobal();
     }
     
+    @CrossOrigin
     @GetMapping("user")
     public List<User> getUsers() {
         return myService.getUsers();
