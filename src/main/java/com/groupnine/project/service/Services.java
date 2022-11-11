@@ -16,10 +16,12 @@ import com.groupnine.project.Data.User;
 import com.groupnine.project.Data.V1.ClimateGlobal;
 import com.groupnine.project.Data.V1.ClimateNorth;
 import com.groupnine.project.Data.V1.ClimateSouth;
+import com.groupnine.project.Data.V1.ClimateV1;
 import com.groupnine.project.Repository.UserRepository;
 import com.groupnine.project.Repository.V1.ClimateGlobalRepo;
 import com.groupnine.project.Repository.V1.ClimateNorthRepo;
 import com.groupnine.project.Repository.V1.ClimateSouthRepo;
+import com.groupnine.project.Repository.V1.ClimateV1Repo;
 
 
 
@@ -34,6 +36,8 @@ public class Services {
     ClimateSouthRepo climateSouth;
     @Autowired
     ClimateGlobalRepo climateglobal;
+    @Autowired
+    ClimateV1Repo climateV1;
 
     @Value("${jwt.secret}")
     private String jwtKey;
@@ -112,6 +116,16 @@ public class Services {
 
     public List<ClimateGlobal> getClimateGlobal() {
         return climateglobal.findAll();
+    }
+
+    //ClimateV1
+
+    public void saveClimateV1(ClimateV1 e){
+        climateV1.save(e);
+    }
+
+    public List<ClimateV1> getClimateV1() {
+        return climateV1.findAll();
     }
 
     //User
