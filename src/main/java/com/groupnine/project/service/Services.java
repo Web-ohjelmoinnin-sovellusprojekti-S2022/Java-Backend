@@ -17,11 +17,13 @@ import com.groupnine.project.Data.V1.ClimateGlobal;
 import com.groupnine.project.Data.V1.ClimateNorth;
 import com.groupnine.project.Data.V1.ClimateSouth;
 import com.groupnine.project.Data.V1.ClimateV1;
+import com.groupnine.project.Data.V1.ClimateV1monthly;
 import com.groupnine.project.Repository.UserRepository;
 import com.groupnine.project.Repository.V1.ClimateGlobalRepo;
 import com.groupnine.project.Repository.V1.ClimateNorthRepo;
 import com.groupnine.project.Repository.V1.ClimateSouthRepo;
 import com.groupnine.project.Repository.V1.ClimateV1Repo;
+import com.groupnine.project.Repository.V1.ClimateV1monthlyRepo;
 
 
 
@@ -38,6 +40,8 @@ public class Services {
     ClimateGlobalRepo climateglobal;
     @Autowired
     ClimateV1Repo climateV1;
+    @Autowired
+    ClimateV1monthlyRepo climateV1monthly;
 
     @Value("${jwt.secret}")
     private String jwtKey;
@@ -126,6 +130,17 @@ public class Services {
 
     public List<ClimateV1> getClimateV1() {
         return climateV1.findAll();
+    }
+
+    
+    //ClimateV1monthly
+
+    public void saveClimateV1monthly(ClimateV1monthly e){
+        climateV1monthly.save(e);
+    }
+
+    public List<ClimateV1monthly> getClimateV1monthly() {
+        return climateV1monthly.findAll();
     }
 
     //User
