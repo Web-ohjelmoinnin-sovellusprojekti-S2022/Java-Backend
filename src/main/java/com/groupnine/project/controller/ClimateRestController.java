@@ -76,15 +76,17 @@ public class ClimateRestController {
         return "OK";
     }
 
+    @CrossOrigin
     @PostMapping("register")
-    public ResponseEntity<String> register(@RequestParam String uname, @RequestParam String pw){
-        User u = myService.register(uname, pw);
+    public ResponseEntity<String> register(@RequestParam String user, @RequestParam String password){
+        User u = myService.register(user, password);
         return new ResponseEntity<>(u.getUsername(), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping("login")
-    public ResponseEntity<String> login(@RequestParam String uname, @RequestParam String pw){
-        String token = myService.login(uname, pw);
+    public ResponseEntity<String> login(@RequestParam String user, @RequestParam String password){
+        String token = myService.login(user, password);
 
         if(token == null){
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -92,6 +94,7 @@ public class ClimateRestController {
         return new ResponseEntity<>(token, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @GetMapping("private")
     public ResponseEntity<String> getPrivateData(@RequestHeader("Authorization") String bearer) {
         if(bearer.startsWith("Bearer")) {
