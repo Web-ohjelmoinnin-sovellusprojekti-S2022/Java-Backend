@@ -19,6 +19,9 @@ import com.groupnine.project.Data.V1.ClimateSouth;
 import com.groupnine.project.Data.V1.ClimateV1;
 import com.groupnine.project.Data.V1.ClimateV1monthly;
 import com.groupnine.project.Data.V2.ClimateV2;
+import com.groupnine.project.Data.V3.ClimateV3;
+import com.groupnine.project.Data.V3.ClimateV3monthly;
+import com.groupnine.project.Data.V4.ClimateV4;
 import com.groupnine.project.Repository.UserRepository;
 import com.groupnine.project.Repository.V1.ClimateGlobalRepo;
 import com.groupnine.project.Repository.V1.ClimateNorthRepo;
@@ -26,6 +29,9 @@ import com.groupnine.project.Repository.V1.ClimateSouthRepo;
 import com.groupnine.project.Repository.V1.ClimateV1Repo;
 import com.groupnine.project.Repository.V1.ClimateV1monthlyRepo;
 import com.groupnine.project.Repository.V2.ClimateV2Repo;
+import com.groupnine.project.Repository.V3.ClimateV3Repo;
+import com.groupnine.project.Repository.V3.ClimateV3monthlyRepo;
+import com.groupnine.project.Repository.V4.ClimateV4Repo;
 
 
 
@@ -46,6 +52,12 @@ public class Services {
     ClimateV1monthlyRepo climateV1monthly;
     @Autowired
     ClimateV2Repo climateV2;
+    @Autowired
+    ClimateV3Repo climateV3;
+    @Autowired
+    ClimateV3monthlyRepo climateV3monthly;
+    @Autowired
+    ClimateV4Repo climateV4;
 
     @Value("${jwt.secret}")
     private String jwtKey;
@@ -136,6 +148,16 @@ public class Services {
         return climateV1.findAll();
     }
 
+    //ClimateV1monthly
+
+    public void saveClimateV1monthly(ClimateV1monthly e){
+        climateV1monthly.save(e);
+    }
+
+    public List<ClimateV1monthly> getClimateV1monthly() {
+        return climateV1monthly.findAll();
+    }
+
     //ClimateV2
     
     public void saveClimateV2(ClimateV2 e){
@@ -146,16 +168,37 @@ public class Services {
         return climateV2.findAll();
     }
 
+    //climateV3
+
+    public void saveClimateV3(ClimateV3 e){
+        climateV3.save(e);
+    }
+
+    public List<ClimateV3> getClimateV3() {
+        return climateV3.findAll();
+    }
+
+    //climateV3monthly
+
+    public void saveClimateV3monthly(ClimateV3monthly e){
+        climateV3monthly.save(e);
+    }
+
+    public List<ClimateV3monthly> getClimateV3monthly() {
+        return climateV3monthly.findAll();
+    }
+
     
-    //ClimateV1monthly
-
-    public void saveClimateV1monthly(ClimateV1monthly e){
-        climateV1monthly.save(e);
+    //ClimateV4
+    
+    public void saveClimateV4(ClimateV4 e){
+        climateV4.save(e);
     }
 
-    public List<ClimateV1monthly> getClimateV1monthly() {
-        return climateV1monthly.findAll();
+    public List<ClimateV4> getClimateV4() {
+        return climateV4.findAll();
     }
+
 
     //User
     public void saveUser(User user){
