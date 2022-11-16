@@ -23,6 +23,7 @@ import com.groupnine.project.Data.V2.ClimateV2;
 import com.groupnine.project.Data.V3.ClimateV3;
 import com.groupnine.project.Data.V3.ClimateV3monthly;
 import com.groupnine.project.Data.V4.ClimateV4;
+import com.groupnine.project.Data.V5.ClimateV5;
 import com.groupnine.project.service.Services;
 
 @RestController
@@ -83,6 +84,12 @@ public class ClimateRestController {
     @GetMapping("/v4/climateV4")
     public List<ClimateV4> getClimateV4() {
         return myService.getClimateV4();
+    }
+
+    @CrossOrigin
+    @GetMapping("/v5/climateV5")
+    public List<ClimateV5> getClimateV5() {
+        return myService.getClimateV5();
     }
     
     @CrossOrigin
