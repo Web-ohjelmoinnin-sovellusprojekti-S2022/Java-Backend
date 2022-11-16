@@ -27,7 +27,7 @@ import com.groupnine.project.service.Services;
 
 @RestController
 public class ClimateRestController {
-    
+
     @Autowired
     Services myService;
 
@@ -84,7 +84,7 @@ public class ClimateRestController {
     public List<ClimateV4> getClimateV4() {
         return myService.getClimateV4();
     }
-    
+
     @CrossOrigin
     @GetMapping("user")
     public List<User> getUsers() {
@@ -92,24 +92,30 @@ public class ClimateRestController {
     }
 
     @PostMapping("useradd")
-    public String addUser(@RequestBody User user){
+    public String addUser(@RequestBody User user) {
         myService.saveUser(user);
         return "OK";
     }
 
     @CrossOrigin
     @PostMapping("register")
-    public ResponseEntity<String> register(@RequestParam String user, @RequestParam String password){
-        User u = myService.register(user, password);
-        return new ResponseEntity<>(u.getUsername(), HttpStatus.OK);
+    public ResponseEntity<String> register(@RequestParam String user, @RequestParam String password) {
+        if (myService.getUserByName(user) == null) {
+            User u = myService.register(user, password);
+            return new ResponseEntity<>(u.getUsername(), HttpStatus.OK);
+        } 
+        else {
+            return new ResponseEntity<>("User already exists", HttpStatus.FORBIDDEN);
+        }
+
     }
 
     @CrossOrigin
     @PostMapping("login")
-    public ResponseEntity<String> login(@RequestParam String user, @RequestParam String password){
+    public ResponseEntity<String> login(@RequestParam String user, @RequestParam String password) {
         String token = myService.login(user, password);
 
-        if(token == null){
+        if (token == null) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
         return new ResponseEntity<>(token, HttpStatus.OK);
@@ -118,16 +124,14 @@ public class ClimateRestController {
     @CrossOrigin
     @GetMapping("private")
     public ResponseEntity<String> getPrivateData(@RequestHeader("Authorization") String bearer) {
-        if(bearer.startsWith("Bearer")) {
+        if (bearer.startsWith("Bearer")) {
             String token = bearer.split(" ")[1];
             String username = myService.validatejwt(token);
-            if(username != null){
-                return new ResponseEntity<>("Private Data for "+username, HttpStatus.OK);
+            if (username != null) {
+                return new ResponseEntity<>("Private Data for " + username, HttpStatus.OK);
             }
         }
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
     }
-
-
 
 }
