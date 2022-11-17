@@ -2,6 +2,7 @@ package com.groupnine.project.service;
 
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -249,5 +250,14 @@ public class Services {
         return userRepository.findAll();
     }
 
-
+    public String getUserByName(String n){
+        User user = userRepository.findByUsername(n);
+        if (userRepository.findByUsername(n) != null){
+            return user.getUsername();
+        }
+        else {
+            return null;
+        }
+        
+    }
 }
