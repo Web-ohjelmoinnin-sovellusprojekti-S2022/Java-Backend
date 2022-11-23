@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.lang.Nullable;
+
 @Entity
 @Table(name="climatedata7")
 public class ClimateV7 {
@@ -14,7 +16,9 @@ public class ClimateV7 {
     private int id;
     private int year1;
     private double temp1;
+    @Nullable
     private Integer year2;
+    @Nullable
     private Double ppm2;
 
   
