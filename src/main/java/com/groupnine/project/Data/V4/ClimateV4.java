@@ -6,18 +6,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.lang.Nullable;
+
+
+
 @Entity
 @Table(name="climatedata4")
 public class ClimateV4 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private int DE08_year;
-    private double DE08_ppm;
-    private int DE082_year;
-    private double DE082_ppm;
-    private int DSS_year;
-    private double DSS_ppm;
+    private Integer id;
+    @Nullable
+    private Integer DE08_year;
+    @Nullable
+    private Double DE08_ppm;
+    @Nullable
+    private Integer DE082_year;
+    @Nullable
+    private Double DE082_ppm;
+    @Nullable
+    private Integer DSS_year;
+    @Nullable
+    private Double DSS_ppm;
 
 
     //data for V4 "Historical CO2 record from the Law Dome DE08, DE08-2, and DSS ice cores ": https://cdiac.ess-dive.lbl.gov/ftp/trends/co2/lawdome.combined.dat
@@ -26,32 +36,32 @@ public class ClimateV4 {
     public ClimateV4() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public int getDE08_year() {
+    public Integer getDE08_year() {
         return this.DE08_year;
     }
 
-    public double getDE08_ppm() {
+    public Double getDE08_ppm() {
         return this.DE08_ppm;
     }
 
-    public int getDE082_year() {
+    public Integer getDE082_year() {
         return this.DE082_year;
     }
 
     
-    public double getDE082_ppm() {
+    public Double getDE082_ppm() {
         return this.DE082_ppm;
     }
 
-    public int getDSS_year() {
+    public Integer getDSS_year() {
         return this.DSS_year;
     }
 
-    public double getDSS_ppm() {
+    public Double getDSS_ppm() {
         return this.DSS_ppm;
     }
 
