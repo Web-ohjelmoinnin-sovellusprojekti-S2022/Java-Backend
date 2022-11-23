@@ -14,8 +14,8 @@ public class ClimateV7 {
     private int id;
     private int year1;
     private double temp1;
-    private int year2;
-    private double ppm2;
+    private Integer year2;
+    private Double ppm2;
 
   
 
@@ -32,11 +32,11 @@ public class ClimateV7 {
         return this.temp1;
     }
 
-    public int getYear2() {
+    public Integer getYear2() {
         return this.year2;
     }
 
-    public double getPpm2() {
+    public Double getPpm2() {
         return this.ppm2;
     }
 
