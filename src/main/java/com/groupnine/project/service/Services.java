@@ -1,6 +1,7 @@
 package com.groupnine.project.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ import com.groupnine.project.Data.V5.ClimateV5;
 import com.groupnine.project.Data.V6.ClimateV6;
 import com.groupnine.project.Data.V7.ClimateV7;
 import com.groupnine.project.Data.V8.ClimateV8;
+import com.groupnine.project.Data.V8.ClimateV8countries;
 import com.groupnine.project.Repository.UserRepository;
 import com.groupnine.project.Repository.V1.ClimateGlobalRepo;
 import com.groupnine.project.Repository.V1.ClimateNorthRepo;
@@ -41,6 +43,7 @@ import com.groupnine.project.Repository.V5.ClimateV5Repo;
 import com.groupnine.project.Repository.V6.ClimateV6Repo;
 import com.groupnine.project.Repository.V7.ClimateV7Repo;
 import com.groupnine.project.Repository.V8.ClimateV8Repo;
+import com.groupnine.project.Repository.V8.ClimateV8countriesRepo;
 
 
 
@@ -74,6 +77,8 @@ public class Services {
     ClimateV7Repo climateV7;
     @Autowired
     ClimateV8Repo climateV8;
+    @Autowired
+    ClimateV8countriesRepo climateV8countries;
 
     @Value("${jwt.secret}")
     private String jwtKey;
@@ -253,6 +258,16 @@ public class Services {
 
     public List<ClimateV8> getClimateV8() {
         return climateV8.findAll();
+    }
+
+    //ClimateV8countries
+
+    public void saveClimateV8countries(ClimateV8countries e){
+        climateV8countries.save(e);
+    }
+
+    public List<ClimateV8countries> getClimateV8countries() {
+        return climateV8countries.findAll();
     }
 
     //User
