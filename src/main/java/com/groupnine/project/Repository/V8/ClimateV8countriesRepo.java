@@ -5,5 +5,5 @@ import com.groupnine.project.Data.V8.ClimateV8countries;
 
 @Repository
 public interface ClimateV8countriesRepo extends JpaRepository<ClimateV8countries, Integer>{
-    ClimateV8countriesRepo findByCountry(String c);
+    
 }
