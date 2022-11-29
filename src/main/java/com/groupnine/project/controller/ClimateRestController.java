@@ -29,6 +29,8 @@ import com.groupnine.project.Data.V7.ClimateV7;
 import com.groupnine.project.Data.V8.ClimateV8;
 import com.groupnine.project.Data.V8.ClimateV8countries;
 import com.groupnine.project.Data.V9.ClimateV9sector;
+import com.groupnine.project.Data.V9.ClimateV9subSector;
+import com.groupnine.project.Data.V9.ClimateV9subSectorDetail;
 import com.groupnine.project.service.Services;
 
 @RestController
@@ -129,6 +131,19 @@ public class ClimateRestController {
         return myService.getClimateV9sector();
     }
 
+    @CrossOrigin
+    @GetMapping("/v9/climateV9subSector")
+    public List<ClimateV9subSector> getClimateV9subSector() {
+        return myService.getClimateV9subSector();
+    }
+
+    @CrossOrigin
+    @GetMapping("/v9/climateV9subSectorDetail")
+    public List<ClimateV9subSectorDetail> getClimateV9subSectorDetail() {
+        return myService.getClimateV9subSectorDetail();
+    }
+
+    
     @CrossOrigin
     @GetMapping("user")
     public List<User> getUsers() {
