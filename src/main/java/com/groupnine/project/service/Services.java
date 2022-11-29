@@ -29,6 +29,7 @@ import com.groupnine.project.Data.V6.ClimateV6;
 import com.groupnine.project.Data.V7.ClimateV7;
 import com.groupnine.project.Data.V8.ClimateV8;
 import com.groupnine.project.Data.V8.ClimateV8countries;
+import com.groupnine.project.Data.V9.ClimateV9sector;
 import com.groupnine.project.Repository.UserRepository;
 import com.groupnine.project.Repository.V1.ClimateGlobalRepo;
 import com.groupnine.project.Repository.V1.ClimateNorthRepo;
@@ -44,6 +45,7 @@ import com.groupnine.project.Repository.V6.ClimateV6Repo;
 import com.groupnine.project.Repository.V7.ClimateV7Repo;
 import com.groupnine.project.Repository.V8.ClimateV8Repo;
 import com.groupnine.project.Repository.V8.ClimateV8countriesRepo;
+import com.groupnine.project.Repository.V9.ClimateV9sectorRepo;
 
 
 
@@ -79,6 +81,8 @@ public class Services {
     ClimateV8Repo climateV8;
     @Autowired
     ClimateV8countriesRepo climateV8countries;
+    @Autowired
+    ClimateV9sectorRepo climateV9sector;
 
     @Value("${jwt.secret}")
     private String jwtKey;
@@ -268,6 +272,16 @@ public class Services {
 
     public List<ClimateV8countries> getClimateV8countries() {
         return climateV8countries.findAll();
+    }
+
+    //ClimateV9
+
+    public void saveClimateV9sector(ClimateV9sector e){
+        climateV9sector.save(e);
+    }
+
+    public List<ClimateV9sector> getClimateV9sector() {
+        return climateV9sector.findAll();
     }
 
     //User
