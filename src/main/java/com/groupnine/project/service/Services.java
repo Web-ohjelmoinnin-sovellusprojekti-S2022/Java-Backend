@@ -1,13 +1,13 @@
 package com.groupnine.project.service;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -330,5 +330,14 @@ public class Services {
             return null;
         }
         
+    }
+    @Transactional
+    public String deleteUser(String n){
+        if (getUserByName(n) != null){
+            userRepository.deleteByUsername(n);
+            return "OK";
+        } else {
+            return "Couldn't remove user, as it doesn't exist";
+        }
     }
 }

@@ -157,6 +157,20 @@ public class ClimateRestController {
     }
 
     @CrossOrigin
+    @PostMapping("deleteUser")
+    public ResponseEntity<String> deleteUser(@RequestHeader("Authorization") String bearer) {
+        String token = bearer.split(" ")[1];
+        String user = myService.validatejwt(token);
+        if(user == null){
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+        }
+        else {
+            myService.deleteUser(user);
+            return new ResponseEntity<>("Ok", HttpStatus.OK);
+        }
+    }
+
+    @CrossOrigin
     @PostMapping("register")
     public ResponseEntity<String> register(@RequestParam String user, @RequestParam String password) {
         if (myService.getUserByName(user) == null) {
@@ -187,7 +201,7 @@ public class ClimateRestController {
             String token = bearer.split(" ")[1];
             String username = myService.validatejwt(token);
             if (username != null) {
-                return new ResponseEntity<>("Private Data for " + username, HttpStatus.OK);
+                return new ResponseEntity<>(username, HttpStatus.OK);
             }
         }
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
