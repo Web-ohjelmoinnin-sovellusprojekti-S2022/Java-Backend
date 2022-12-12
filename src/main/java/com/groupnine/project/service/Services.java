@@ -34,6 +34,7 @@ import com.groupnine.project.Data.V9.ClimateV9sector;
 import com.groupnine.project.Data.V9.ClimateV9subSector;
 import com.groupnine.project.Data.V9.ClimateV9subSectorDetail;
 import com.groupnine.project.Repository.UserRepository;
+import com.groupnine.project.Repository.CustomviewRepo;
 import com.groupnine.project.Repository.V1.ClimateGlobalRepo;
 import com.groupnine.project.Repository.V1.ClimateNorthRepo;
 import com.groupnine.project.Repository.V1.ClimateSouthRepo;
@@ -52,6 +53,7 @@ import com.groupnine.project.Repository.V8.ClimateV8countriesRepo;
 import com.groupnine.project.Repository.V9.ClimateV9sectorRepo;
 import com.groupnine.project.Repository.V9.ClimateV9subSectorDetailRepo;
 import com.groupnine.project.Repository.V9.ClimateV9subSectorRepo;
+import com.groupnine.project.Data.Customview;
 
 
 
@@ -95,6 +97,8 @@ public class Services {
     ClimateV9subSectorDetailRepo climateV9subSectorDetail;
     @Autowired
     ClimateV10Repo climateV10;
+    @Autowired
+    CustomviewRepo customview;
 
     @Value("${jwt.secret}")
     private String jwtKey;
@@ -325,6 +329,17 @@ public class Services {
     public List<ClimateV10> getClimateV10() {
         return climateV10.findAll();
     }
+
+    //customView
+
+    public void saveCustomview(Customview e){
+        customview.save(e);
+    }
+
+    public List<Customview> getCustomview() {
+        return customview.findAll();
+    }
+    
 
     //User
     public void saveUser(User user){

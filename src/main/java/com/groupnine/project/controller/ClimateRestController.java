@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.groupnine.project.Data.User;
+import com.groupnine.project.Data.Customview;
 import com.groupnine.project.Data.V1.ClimateGlobal;
 import com.groupnine.project.Data.V1.ClimateNorth;
 import com.groupnine.project.Data.V1.ClimateSouth;
@@ -149,6 +150,13 @@ public class ClimateRestController {
     public List<ClimateV10> getClimateV10() {
         return myService.getClimateV10();
     }
+
+    @CrossOrigin
+    @GetMapping("/customview")
+    public List<Customview> getCustomView() {
+        return myService.getCustomview();
+    }
+
 
     @CrossOrigin
     @GetMapping("user")
