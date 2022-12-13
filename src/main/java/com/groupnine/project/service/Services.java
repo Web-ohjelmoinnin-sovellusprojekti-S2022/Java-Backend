@@ -13,7 +13,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.groupnine.project.Data.User;
+import com.groupnine.project.Data.Client;
 import com.groupnine.project.Data.V1.ClimateGlobal;
 import com.groupnine.project.Data.V1.ClimateNorth;
 import com.groupnine.project.Data.V1.ClimateSouth;
@@ -32,7 +32,7 @@ import com.groupnine.project.Data.V8.ClimateV8countries;
 import com.groupnine.project.Data.V9.ClimateV9sector;
 import com.groupnine.project.Data.V9.ClimateV9subSector;
 import com.groupnine.project.Data.V9.ClimateV9subSectorDetail;
-import com.groupnine.project.Repository.UserRepository;
+import com.groupnine.project.Repository.ClientRepository;
 import com.groupnine.project.Repository.CustomviewRepo;
 import com.groupnine.project.Repository.V1.ClimateGlobalRepo;
 import com.groupnine.project.Repository.V1.ClimateNorthRepo;
@@ -59,7 +59,7 @@ public class Services {
     @Autowired
     ClimateNorthRepo climateNorth;
     @Autowired
-    UserRepository userRepository;
+    ClientRepository userRepository;
     @Autowired
     ClimateSouthRepo climateSouth;
     @Autowired
@@ -131,9 +131,9 @@ public class Services {
     }
 
     // Security Register User
-    public User register(String username, String password) {
+    public Client register(String username, String password) {
         BCryptPasswordEncoder enc = new BCryptPasswordEncoder();
-        User u = new User(username, enc.encode(password));
+        Client u = new Client(username, enc.encode(password));
         userRepository.save(u);
         return u;
     }
@@ -142,7 +142,7 @@ public class Services {
     // Return token or null if not found or password wrong.
     public String login(String username, String password) {
         BCryptPasswordEncoder enc = new BCryptPasswordEncoder();
-        User u = userRepository.findById(password).orElse(null);
+        Client u = userRepository.findById(password).orElse(null);
 
         if (u == null || !enc.matches(password, u.getPassword())) {
             return null;
@@ -360,16 +360,16 @@ public class Services {
     }
 
     // User
-    public void saveUser(User user) {
+    public void saveUser(Client user) {
         userRepository.save(user);
     }
 
-    public List<User> getUsers() {
+    public List<Client> getUsers() {
         return userRepository.findAll();
     }
 
     public String getUserByName(String n) {
-        User user = userRepository.findByUsername(n);
+        Client user = userRepository.findByUsername(n);
         if (userRepository.findByUsername(n) != null) {
             return user.getUsername();
         } else {

@@ -4,17 +4,17 @@ import javax.persistence.Id;
 
 
 @Entity
-public class User {
+public class Client {
     @Id
     private String username;
 
     private String password;
 
     
-    public User() {}
+    public Client() {}
 
 
-    public User(String username, String password) {
+    public Client(String username, String password) {
         this.username = username;
         this.password = password;
     }
