@@ -126,7 +126,7 @@ public class Services {
             return c;
     }
 
-    public Customview getViewsByOwner(String owner){
+    public List<Customview> getViewsByOwner(String owner){
         return customview.findByOwner(owner);
     }
 

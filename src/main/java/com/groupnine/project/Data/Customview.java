@@ -30,6 +30,10 @@ public class Customview {
     private String V8text;
     private String V9text;
 
+    public Customview() {
+        
+    }
+
     public Customview(String owner, 
     boolean V1,
     boolean V3,

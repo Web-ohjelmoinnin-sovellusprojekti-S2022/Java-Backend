@@ -1,4 +1,5 @@
 package com.groupnine.project.Repository;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,6 +11,6 @@ public interface CustomviewRepo extends JpaRepository<Customview, String>{
 
     Customview findById(Integer Id);
 
-    Customview findByOwner(String owner);
+    List<Customview> findByOwner(String owner);
 
 }
