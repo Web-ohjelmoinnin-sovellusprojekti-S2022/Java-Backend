@@ -2,6 +2,7 @@ package com.groupnine.project.controller;
 
 import java.util.List;
 
+import org.apache.tomcat.util.http.parser.HttpParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -152,11 +153,23 @@ public class ClimateRestController {
     }
 
     @CrossOrigin
-    @GetMapping("/customview")
+    @GetMapping("customview")
     public List<Customview> getCustomView() {
         return myService.getCustomview();
     }
 
+    @CrossOrigin
+    @GetMapping("customview/id")
+    public Customview getCustomViewById(@RequestParam Integer id) {
+        return myService.getCustomviewById(id);
+    }
+
+    @CrossOrigin
+    @PostMapping("customview/create")
+    public ResponseEntity<String> createCustomView(@RequestBody Customview customview){
+        myService.saveCustomview(customview);
+        return new ResponseEntity<>("OK", HttpStatus.OK);
+    }
 
     @CrossOrigin
     @GetMapping("user")

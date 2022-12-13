@@ -369,4 +369,9 @@ public class Services {
             return "Couldn't remove user, as it doesn't exist";
         }
     }
+
+
+    public Customview getCustomviewById(Integer id) {
+        return customview.findById(id);
+    }
 }
