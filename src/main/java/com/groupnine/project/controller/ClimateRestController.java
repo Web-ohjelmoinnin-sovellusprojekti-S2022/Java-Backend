@@ -163,6 +163,12 @@ public class ClimateRestController {
     }
 
     @CrossOrigin
+    @GetMapping("customview/owner")
+    public Customview getCustomviewByOwner(@RequestParam String owner){
+        return myService.getViewsByOwner(owner);
+    }
+
+    @CrossOrigin
     @PostMapping("customview/create")
     public ResponseEntity<String> createCustomView(
             @RequestParam String owner,

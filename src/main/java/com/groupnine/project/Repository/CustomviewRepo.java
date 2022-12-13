@@ -10,4 +10,6 @@ public interface CustomviewRepo extends JpaRepository<Customview, String>{
 
     Customview findById(Integer Id);
 
+    Customview findByOwner(String owner);
+
 }

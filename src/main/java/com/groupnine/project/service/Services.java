@@ -126,6 +126,10 @@ public class Services {
             return c;
     }
 
+    public Customview getViewsByOwner(String owner){
+        return customview.findByOwner(owner);
+    }
+
     // Security Register User
     public User register(String username, String password) {
         BCryptPasswordEncoder enc = new BCryptPasswordEncoder();
