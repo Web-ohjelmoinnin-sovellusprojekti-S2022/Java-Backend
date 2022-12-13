@@ -29,7 +29,41 @@ public class Customview {
     private String V7text;
     private String V8text;
     private String V9text;
-    
+
+    public Customview(String owner, 
+    boolean V1,
+    boolean V3,
+    boolean V5,
+    boolean V6,
+    boolean V7,
+    boolean V8,
+    boolean V9,
+    boolean gridview,
+    String V1text,
+    String V3text,
+    String V5text,
+    String V6text,
+    String V7text,
+    String V8text,
+    String V9text){
+        this.owner = owner;
+        this.V1 = V1;
+        this.V3 = V3;
+        this.V5 = V5;
+        this.V6 = V6;
+        this.V7 = V7;
+        this.V8 = V8;
+        this.V9 = V9;
+        this.gridview = gridview;
+        this.V1text = V1text;
+        this.V3text = V3text;
+        this.V5text = V5text;
+        this.V6text = V6text;
+        this.V7text = V7text;
+        this.V8text = V8text;
+        this.V9text = V9text;
+
+    }
 
     public int getId() {
         return this.id;
@@ -131,7 +165,4 @@ public class Customview {
         return this.V9text;
     }
 
-    
-
 }
-

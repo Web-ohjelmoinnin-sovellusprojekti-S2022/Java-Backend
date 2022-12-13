@@ -96,8 +96,6 @@ public class ClimateRestController {
         return myService.getClimateV4();
     }
 
-
-
     @CrossOrigin
     @GetMapping("/v5/climateV5")
     public List<ClimateV5> getClimateV5() {
@@ -166,8 +164,25 @@ public class ClimateRestController {
 
     @CrossOrigin
     @PostMapping("customview/create")
-    public ResponseEntity<String> createCustomView(@RequestBody Customview customview){
-        myService.saveCustomview(customview);
+    public ResponseEntity<String> createCustomView(
+            @RequestParam String owner,
+            @RequestParam Boolean V1,
+            @RequestParam Boolean V3,
+            @RequestParam Boolean V5,
+            @RequestParam Boolean V6,
+            @RequestParam Boolean V7,
+            @RequestParam Boolean V8,
+            @RequestParam Boolean V9,
+            @RequestParam String V1text,
+            @RequestParam String V3text,
+            @RequestParam String V5text,
+            @RequestParam String V6text,
+            @RequestParam String V7text,
+            @RequestParam String V8text,
+            @RequestParam String V9text,
+            @RequestParam Boolean gridView) {
+        
+        myService.createView(owner, V1, V3, V5, V6, V7, V8, V9, gridView, V1text, V3text, V5text, V6text, V7text, V8text, V9text);        
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
@@ -188,10 +203,9 @@ public class ClimateRestController {
     public ResponseEntity<String> deleteUser(@RequestHeader("Authorization") String bearer) {
         String token = bearer.split(" ")[1];
         String user = myService.validatejwt(token);
-        if(user == null){
+        if (user == null) {
             return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
-        }
-        else {
+        } else {
             myService.deleteUser(user);
             return new ResponseEntity<>("Ok", HttpStatus.OK);
         }
@@ -203,8 +217,7 @@ public class ClimateRestController {
         if (myService.getUserByName(user) == null) {
             User u = myService.register(user, password);
             return new ResponseEntity<>(u.getUsername(), HttpStatus.OK);
-        } 
-        else {
+        } else {
             return new ResponseEntity<>("User already exists", HttpStatus.FORBIDDEN);
         }
 
