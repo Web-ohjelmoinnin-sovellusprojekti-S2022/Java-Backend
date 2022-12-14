@@ -13,7 +13,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.groupnine.project.Data.User;
+import com.groupnine.project.Data.Client;
 import com.groupnine.project.Data.V1.ClimateGlobal;
 import com.groupnine.project.Data.V1.ClimateNorth;
 import com.groupnine.project.Data.V1.ClimateSouth;
@@ -143,9 +143,9 @@ public class Services {
 
     // Käyttäjän rekisteröinti
 
-    public User register(String username, String password) {
+    public Client register(String username, String password) {
         BCryptPasswordEncoder enc = new BCryptPasswordEncoder();
-        User u = new User(username, enc.encode(password));
+        Client u = new Client(username, enc.encode(password));
         userRepository.save(u);
         return u;
     }
@@ -154,7 +154,7 @@ public class Services {
 
     public String login(String username, String password) {
         BCryptPasswordEncoder enc = new BCryptPasswordEncoder();
-        User u = userRepository.findById(password).orElse(null);
+        Client u = userRepository.findById(password).orElse(null);
 
         if (u == null || !enc.matches(password, u.getPassword())) {
             return null;
@@ -373,19 +373,19 @@ public class Services {
     }
 
     // Tallentaa käyttäjän.
-    public void saveUser(User user) {
+    public void saveUser(Client user) {
         userRepository.save(user);
     }
 
     // Palauttaa kaikki käyttäjät.
-    public List<User> getUsers() {
+    public List<Client> getUsers() {
         return userRepository.findAll();
     }
 
     // Palauttaa käyttäjän nimen perusteella.
 
     public String getUserByName(String n) {
-        User user = userRepository.findByUsername(n);
+        Client user = userRepository.findByUsername(n);
         if (userRepository.findByUsername(n) != null) {
             return user.getUsername();
         } else {
