@@ -212,7 +212,7 @@ public class ClimateRestController {
     }
 
     @CrossOrigin
-    @PostMapping("deleteUser")
+    @PostMapping("deleteuser")
     public ResponseEntity<String> deleteUser(@RequestHeader("Authorization") String bearer) {
         String token = bearer.split(" ")[1];
         String user = myService.validatejwt(token);
