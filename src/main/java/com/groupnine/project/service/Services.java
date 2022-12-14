@@ -396,4 +396,11 @@ public class Services {
     public Customview getCustomviewById(Integer id) {
         return customview.findById(id);
     }
+
+    @Transactional
+
+    public String deleteViewByOwner(String token) {
+        customview.deleteByOwner(token);
+        return "Ok";
+    }
 }
