@@ -104,6 +104,8 @@ public class Services {
 
     }
 
+    // Luo uuden oman näkymän.
+
     public Customview createView(
             String owner,
             Boolean V1,
@@ -126,16 +128,21 @@ public class Services {
             return c;
     }
 
+    // Poistaa oman näkymän ID:n perusteella
+
     @Transactional
     public void deleteView(int id) {
         customview.deleteById(id);
     }
 
+    // Palauttaa omat näkymät omistajan mukaan.
+
     public List<Customview> getViewsByOwner(String owner){
         return customview.findByOwner(owner);
     }
 
-    // Security Register User
+    // Käyttäjän rekisteröinti
+
     public User register(String username, String password) {
         BCryptPasswordEncoder enc = new BCryptPasswordEncoder();
         User u = new User(username, enc.encode(password));
@@ -143,8 +150,8 @@ public class Services {
         return u;
     }
 
-    // Security Login User
-    // Return token or null if not found or password wrong.
+    // Sisäänkirjautuminen. Palauttaa tokenin, jos käyttäjätili löytyy.
+
     public String login(String username, String password) {
         BCryptPasswordEncoder enc = new BCryptPasswordEncoder();
         User u = userRepository.findById(password).orElse(null);
@@ -158,7 +165,7 @@ public class Services {
     }
 
     /**
-     * verify jwt token and return username if token is valid
+     * Tarkistaa jwt tokenin ja palauttaa käyttäjänäimen jos token on oikea.
      * 
      * @param jwtToken
      * @return
@@ -354,24 +361,28 @@ public class Services {
         return climateV10.findAll();
     }
 
-    // customView
+    // Tallentaa oman näkymän
 
     public void saveCustomview(Customview e) {
         customview.save(e);
     }
 
+    // Palauttaa kaikki omat näkymät
     public List<Customview> getCustomview() {
         return customview.findAll();
     }
 
-    // User
+    // Tallentaa käyttäjän.
     public void saveUser(User user) {
         userRepository.save(user);
     }
 
+    // Palauttaa kaikki käyttäjät.
     public List<User> getUsers() {
         return userRepository.findAll();
     }
+
+    // Palauttaa käyttäjän nimen perusteella.
 
     public String getUserByName(String n) {
         User user = userRepository.findByUsername(n);
@@ -383,6 +394,8 @@ public class Services {
 
     }
 
+    // Poistaa käyttäjän nimen perusteella.
+
     @Transactional
     public String deleteUser(String n) {
         if (getUserByName(n) != null) {
@@ -393,12 +406,13 @@ public class Services {
         }
     }
 
+    // Palauttaa oman näkymän ID:n perusteella.    
     public Customview getCustomviewById(Integer id) {
         return customview.findById(id);
     }
 
+    // Poistaa näkymät tekijän perusteella.
     @Transactional
-
     public String deleteViewByOwner(String token) {
         customview.deleteByOwner(token);
         return "Ok";

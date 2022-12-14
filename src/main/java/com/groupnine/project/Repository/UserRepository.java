@@ -8,8 +8,9 @@ import com.groupnine.project.Data.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, String>{
 
-    //@Query("SELECT u FROM user u WHERE user = ?1")
+    // Etsii käyttäjän käyttäjänimen perusteella
     User findByUsername(String username);
 
+    // Poistaa käyttäjän käyttäjänimen perusteella
     String deleteByUsername(String username);
 }

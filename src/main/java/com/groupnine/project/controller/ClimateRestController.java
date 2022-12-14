@@ -150,11 +150,15 @@ public class ClimateRestController {
         return myService.getClimateV10();
     }
 
+    //Palauttaa kaikki tietokannasta löytyvät omat näkymät
+
     @CrossOrigin
     @GetMapping("customview")
     public List<Customview> getCustomView() {
         return myService.getCustomview();
     }
+
+    //Palauttaa tietokannasta ID:llä löytyvän oman näkymän
 
     @CrossOrigin
     @GetMapping("customview/id")
@@ -162,11 +166,15 @@ public class ClimateRestController {
         return myService.getCustomviewById(id);
     }
 
+    //Palauttaa tietokannasta kaikki annetun käyttäjän omat näkymät.
+
     @CrossOrigin
     @GetMapping("customview/owner")
     public List<Customview> getCustomviewByOwner(@RequestParam String owner){
         return myService.getViewsByOwner(owner);
     }
+
+    //Luo tietokantaan oman näkymän syötetyillä tiedoilla.
 
     @CrossOrigin
     @PostMapping("customview/create")
@@ -192,12 +200,16 @@ public class ClimateRestController {
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
+    //Poistaa tietokannasta oman näkymän ID:n perusteella.
+
     @CrossOrigin
     @PostMapping("customview/delete")
     public ResponseEntity<String> deleteCustomView(@RequestParam int id){
         myService.deleteView(id);
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
+
+    //Poistaa tietokannasta kaikki annetun käyttäjän näkymät.
 
     @CrossOrigin
     @PostMapping("customview/deletebyowner")
@@ -206,17 +218,23 @@ public class ClimateRestController {
         return new ResponseEntity<>("OK", HttpStatus.OK);
     }
 
+    //Palauttaa kaikki käyttäjät.
+
     @CrossOrigin
     @GetMapping("user")
     public List<User> getUsers() {
         return myService.getUsers();
     }
 
+    //Lisää käyttäjän tietokantaan
+
     @PostMapping("useradd")
     public String addUser(@RequestBody User user) {
         myService.saveUser(user);
         return "OK";
     }
+
+    //Poistaa käyttäjän tietokannasta tokenin perusteella.
 
     @CrossOrigin
     @PostMapping("deleteuser")
@@ -231,6 +249,8 @@ public class ClimateRestController {
         }
     }
 
+    //Luo käyttäjän tietokantaan, ja luo tokenin.
+
     @CrossOrigin
     @PostMapping("register")
     public ResponseEntity<String> register(@RequestParam String user, @RequestParam String password) {
@@ -243,6 +263,8 @@ public class ClimateRestController {
 
     }
 
+    //Kirjautuu sisälle. Tarkistaa käyttäjänimen ja salasanan. Jos käyttäjänimi ja salasana on oikein, palauttaa tokenin.
+
     @CrossOrigin
     @PostMapping("login")
     public ResponseEntity<String> login(@RequestParam String user, @RequestParam String password) {
@@ -253,6 +275,8 @@ public class ClimateRestController {
         }
         return new ResponseEntity<>(token, HttpStatus.OK);
     }
+
+    //Tarkistaa, löytyykö tokenilla käyttäjätiliä vai ei.
 
     @CrossOrigin
     @GetMapping("private")
