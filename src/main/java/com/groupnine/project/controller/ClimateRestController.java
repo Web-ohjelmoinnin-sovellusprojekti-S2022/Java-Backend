@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.groupnine.project.Data.User;
+import com.groupnine.project.Data.Client;
 import com.groupnine.project.Data.Customview;
 import com.groupnine.project.Data.V1.ClimateGlobal;
 import com.groupnine.project.Data.V1.ClimateNorth;
@@ -208,12 +208,12 @@ public class ClimateRestController {
 
     @CrossOrigin
     @GetMapping("user")
-    public List<User> getUsers() {
+    public List<Client> getUsers() {
         return myService.getUsers();
     }
 
     @PostMapping("useradd")
-    public String addUser(@RequestBody User user) {
+    public String addUser(@RequestBody Client user) {
         myService.saveUser(user);
         return "OK";
     }
@@ -235,7 +235,7 @@ public class ClimateRestController {
     @PostMapping("register")
     public ResponseEntity<String> register(@RequestParam String user, @RequestParam String password) {
         if (myService.getUserByName(user) == null) {
-            User u = myService.register(user, password);
+            Client u = myService.register(user, password);
             return new ResponseEntity<>(u.getUsername(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>("User already exists", HttpStatus.FORBIDDEN);
