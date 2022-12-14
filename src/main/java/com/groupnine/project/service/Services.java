@@ -127,7 +127,7 @@ public class Services {
     }
 
     @Transactional
-    public void deleteView(Integer id) {
+    public void deleteView(int id) {
         customview.deleteById(id);
     }
 
