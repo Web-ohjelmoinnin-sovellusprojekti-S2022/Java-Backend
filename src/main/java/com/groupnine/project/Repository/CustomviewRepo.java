@@ -13,4 +13,6 @@ public interface CustomviewRepo extends JpaRepository<Customview, String>{
 
     List<Customview> findByOwner(String owner);
 
+    List<Customview> deleteById(Integer Id);
+
 }

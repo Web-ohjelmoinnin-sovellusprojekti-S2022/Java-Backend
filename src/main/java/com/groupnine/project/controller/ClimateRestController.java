@@ -193,6 +193,13 @@ public class ClimateRestController {
     }
 
     @CrossOrigin
+    @PostMapping("customview/delete")
+    public ResponseEntity<String> deleteCustomView(@RequestParam Integer id){
+        myService.deleteView(id);
+        return new ResponseEntity<>("OK", HttpStatus.OK);
+    }
+
+    @CrossOrigin
     @GetMapping("user")
     public List<User> getUsers() {
         return myService.getUsers();

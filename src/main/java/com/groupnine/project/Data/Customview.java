@@ -10,7 +10,7 @@ public class Customview {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String owner;
 
     private boolean V1;

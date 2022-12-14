@@ -126,6 +126,11 @@ public class Services {
             return c;
     }
 
+    @Transactional
+    public void deleteView(Integer id) {
+        customview.deleteById(id);
+    }
+
     public List<Customview> getViewsByOwner(String owner){
         return customview.findByOwner(owner);
     }
